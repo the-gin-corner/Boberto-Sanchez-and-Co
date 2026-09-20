@@ -7,6 +7,8 @@ extends Node2D
 @onready var miro: CharacterBody2D = $miro
 @onready var miroSprite: AnimatedSprite2D = $miro/AnimatedSprite2D
 
+var friends = []
+
 const NPC_STRINGS = [
 	"Hello, Boberto. Going to the party yeah? Just make sure I don't sit next to Keno.",
 	"Boberto! My man! It's been a bit. Can I sit next to Kamilba? She's pretty!",
