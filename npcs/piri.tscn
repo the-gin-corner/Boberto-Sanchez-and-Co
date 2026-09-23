@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://dckvh8ckqlo1f"]
+
+[ext_resource type="Script" uid="uid://dsrb157irvpxm" path="res://scripts/piri.gd" id="1_lggs1"]
+[ext_resource type="Texture2D" uid="uid://bvm5vryv3c6s2" path="res://sprites/piri.png" id="2_5xqdp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vp3lk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_teeyb"]
+atlas = ExtResource("2_5xqdp")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3rh8"]
+atlas = ExtResource("2_5xqdp")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_anqvq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_teeyb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a3rh8")
+}],
+"loop": 1,
+"name": &"stance",
+"speed": 3.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_af8xb"]
+radius = 20.0
+
+[node name="piri" type="CharacterBody2D" unique_id=380311125]
+script = ExtResource("1_lggs1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=554462331]
+shape = SubResource("CircleShape2D_vp3lk")
+disabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=264408626]
+sprite_frames = SubResource("SpriteFrames_anqvq")
+animation = &"stance"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2091188486]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=69146590]
+shape = SubResource("CircleShape2D_af8xb")

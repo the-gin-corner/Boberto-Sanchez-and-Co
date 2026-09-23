@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://onochwy83ri3"
-path="res://.godot/imported/extraTileCauseIForgot.png-414e5a346d9c2aeb51623b61c7a9859f.ctex"
+uid="uid://dinr07m3w1nbu"
+path="res://.godot/imported/Interaction_Icon.png-1d20226902feaa0359cd2c7fef6ee343.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scripts/extraTileCauseIForgot.png"
-dest_files=["res://.godot/imported/extraTileCauseIForgot.png-414e5a346d9c2aeb51623b61c7a9859f.ctex"]
+source_file="res://sprites/Interaction_Icon.png"
+dest_files=["res://.godot/imported/Interaction_Icon.png-1d20226902feaa0359cd2c7fef6ee343.ctex"]
 
 [params]
 

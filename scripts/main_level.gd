@@ -1,21 +1,40 @@
 extends Node2D
 
-@onready var boberto: CharacterBody2D = $boberto
+@onready var boberto: CharacterBody2D = %boberto
 @onready var camera_2d: Camera2D = %Camera2D
 
 #NPCs
-@onready var miro: CharacterBody2D = $miro
-@onready var miroSprite: AnimatedSprite2D = $miro/AnimatedSprite2D
+#---
+#Miro
+@onready var miro: Friend = $NPCs/miro
+@onready var miroSprite: AnimatedSprite2D = $NPCs/miro/AnimatedSprite2D
 
-var friends = []
+#Keno
+@onready var keno: Friend = $NPCs/keno
+@onready var kenoSprite: AnimatedSprite2D = $NPCs/keno/AnimatedSprite2D
 
-const NPC_STRINGS = [
-	"Hello, Boberto. Going to the party yeah? Just make sure I don't sit next to Keno.",
-	"Boberto! My man! It's been a bit. Can I sit next to Kamilba? She's pretty!",
-	"Greetings, Boberto. It is a wonderful day, isn't it? Center view is the best.",
-	"Bobert. May I request a front view? My eyes are weak.",
-	"Bob. Up. I like uppies."
-]
+#Kalimba
+@onready var kalimba: CharacterBody2D = $NPCs/kalimba
+@onready var kalimbaSprite: AnimatedSprite2D = $NPCs/kalimba/AnimatedSprite2D
+
+
+#Tabs
+@onready var tabs: Friend = $NPCs/tabs
+@onready var tabsSprite: AnimatedSprite2D = $NPCs/tabs/AnimatedSprite2D
+
+
+#Piri
+@onready var piri: Friend = $NPCs/piri
+@onready var piriSprite: AnimatedSprite2D = $NPCs/piri/AnimatedSprite2D
+
+
+@onready var friendsAndSprites = {
+	miro: miroSprite,
+	keno: kenoSprite,
+	kalimba: kalimbaSprite,
+	tabs: tabsSprite,
+	piri: piriSprite
+}
 
 
 # Called when the node enters the scene tree for the first time.
@@ -26,8 +45,10 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var bobertoPos = boberto.position.x
-	print(bobertoPos)
 	
+	#Camera switching between screens
+	#-------
+	#Surely there is a better way to do this lol
 	if bobertoPos < 1200:
 		camera_2d.position.x = 0
 	else:
@@ -50,9 +71,10 @@ func _process(delta: float) -> void:
 		if bobertoPos > 10800:
 			camera_2d.position.x = 10800
 	
-	
-	if bobertoPos > miro.position.x:
-		miroSprite.flip_h = true
-	else:
-		miroSprite.flip_h = false
+	#Handling NPC sprite flipping
+	for friend in friendsAndSprites:
+		if bobertoPos > friend.position.x:
+			friendsAndSprites[friend].flip_h = true
+		else:
+			friendsAndSprites[friend].flip_h = false
 	

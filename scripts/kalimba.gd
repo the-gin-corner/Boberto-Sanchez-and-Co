@@ -1,12 +1,12 @@
 extends Friend
 
 func _ready() -> void:
-	friendName = "Miro"
+	friendName = "Kalimba"
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print(dialogueDictionary["Miro"])
-	
-	
+	print("Hello there, Boberto!")
+
+
 func _on_area_2d_body_exited(body: Node2D) -> void:
-	print("Goodbye, Boberto")
+	print("Goodbye, Boberto!")

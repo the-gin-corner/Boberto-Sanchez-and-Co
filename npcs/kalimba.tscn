@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://b3jsjugwlwggr"]
+
+[ext_resource type="Texture2D" uid="uid://cu5gt2rq0m12e" path="res://sprites/kalimba.png" id="1_0d1di"]
+[ext_resource type="Script" uid="uid://bm20cxju2ylkl" path="res://scripts/kalimba.gd" id="1_dxu3y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hhlkb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ee5to"]
+atlas = ExtResource("1_0d1di")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1x3y8"]
+atlas = ExtResource("1_0d1di")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_suyu2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ee5to")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1x3y8")
+}],
+"loop": 1,
+"name": &"stance",
+"speed": 3.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ajlr4"]
+radius = 20.0
+
+[node name="kalimba" type="CharacterBody2D" unique_id=894485031]
+script = ExtResource("1_dxu3y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=377031531]
+shape = SubResource("CircleShape2D_hhlkb")
+disabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=29751478]
+sprite_frames = SubResource("SpriteFrames_suyu2")
+animation = &"stance"
+frame_progress = 0.47155654
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1451291880]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=101561500]
+shape = SubResource("CircleShape2D_ajlr4")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
