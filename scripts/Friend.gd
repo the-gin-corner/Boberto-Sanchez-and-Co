@@ -12,6 +12,16 @@ extends CharacterBody2D
 }
 
 var friendName
+var collisionState
+var currentLine
+
+func _ready() -> void:
+	add_to_group("friends")
+
+func printDialogue():
+	if dialogueDictionary.has(friendName):
+		currentLine = dialogueDictionary[friendName]
+		print(currentLine)
 
 func _process(delta: float) -> void:
 	animated_sprite_2d.play("stance")

@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b3jsjugwlwggr" path="res://npcs/kalimba.tscn" id="4_4mnpp"]
 [ext_resource type="PackedScene" uid="uid://ub7dran6u78f" path="res://npcs/miro.tscn" id="4_05as6"]
 [ext_resource type="PackedScene" uid="uid://c4okobjv4l3mk" path="res://npcs/tabs.tscn" id="4_ctebd"]
+[ext_resource type="FontFile" uid="uid://fubqg3mad454" path="res://Boxel_v0.1_beta.ttf" id="4_uhmka"]
 [ext_resource type="PackedScene" uid="uid://cfljt1bhah8l1" path="res://npcs/keno.tscn" id="5_4mnpp"]
 [ext_resource type="Texture2D" uid="uid://6e0ueex53stu" path="res://sprites/tileset.png" id="5_5ymk8"]
 [ext_resource type="PackedScene" uid="uid://dckvh8ckqlo1f" path="res://npcs/piri.tscn" id="8_eqmdw"]
@@ -55,6 +56,24 @@ scale = Vector2(6.75, 6.75)
 unique_name_in_owner = true
 offset = Vector2(575, 325)
 
+[node name="Timer" type="Timer" parent="Camera2D" unique_id=1288120273]
+process_callback = 0
+wait_time = 5.0
+
+[node name="Dialogue" type="Label" parent="Camera2D" unique_id=1796519781]
+offset_left = 28.0
+offset_top = 70.0
+offset_right = 68.0
+offset_bottom = 93.0
+theme_override_fonts/font = ExtResource("4_uhmka")
+
+[node name="Name" type="Label" parent="Camera2D" unique_id=1407370506]
+offset_left = 28.0
+offset_top = 32.0
+offset_right = 68.0
+offset_bottom = 55.0
+theme_override_fonts/font = ExtResource("4_uhmka")
+
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1902772626]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1793845990]
@@ -69,25 +88,27 @@ shape = SubResource("RectangleShape2D_yf5fn")
 
 [node name="NPCs" type="Node" parent="." unique_id=126695886]
 
-[node name="piri" parent="NPCs" unique_id=380311125 instance=ExtResource("8_eqmdw")]
+[node name="piri" parent="NPCs" unique_id=380311125 groups=["friends"] instance=ExtResource("8_eqmdw")]
 position = Vector2(10394, 346)
 scale = Vector2(6.75, 6.75)
 
-[node name="tabs" parent="NPCs" unique_id=843681475 instance=ExtResource("4_ctebd")]
+[node name="tabs" parent="NPCs" unique_id=843681475 groups=["friends"] instance=ExtResource("4_ctebd")]
 position = Vector2(9248, 267)
 scale = Vector2(6.75, 6.75)
 
-[node name="kalimba" parent="NPCs" unique_id=894485031 instance=ExtResource("4_4mnpp")]
+[node name="kalimba" parent="NPCs" unique_id=894485031 groups=["friends"] instance=ExtResource("4_4mnpp")]
 position = Vector2(6745, 426)
 scale = Vector2(6.75, 6.75)
 
-[node name="miro" parent="NPCs" unique_id=799427488 instance=ExtResource("4_05as6")]
+[node name="miro" parent="NPCs" unique_id=799427488 groups=["friends"] instance=ExtResource("4_05as6")]
 position = Vector2(1746, 420)
 scale = Vector2(6.75, 6.75)
 
-[node name="keno" parent="NPCs" unique_id=1864498742 instance=ExtResource("5_4mnpp")]
+[node name="keno" parent="NPCs" unique_id=1864498742 groups=["friends"] instance=ExtResource("5_4mnpp")]
 position = Vector2(4112, 346)
 scale = Vector2(6.75, 6.75)
+
+[connection signal="timeout" from="Camera2D/Timer" to="." method="_on_timer_timeout"]
 
 [editable path="NPCs/piri"]
 [editable path="NPCs/tabs"]

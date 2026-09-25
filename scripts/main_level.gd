@@ -2,45 +2,22 @@ extends Node2D
 
 @onready var boberto: CharacterBody2D = %boberto
 @onready var camera_2d: Camera2D = %Camera2D
-
-#NPCs
-#---
-#Miro
-@onready var miro: Friend = $NPCs/miro
-@onready var miroSprite: AnimatedSprite2D = $NPCs/miro/AnimatedSprite2D
-
-#Keno
-@onready var keno: Friend = $NPCs/keno
-@onready var kenoSprite: AnimatedSprite2D = $NPCs/keno/AnimatedSprite2D
-
-#Kalimba
-@onready var kalimba: CharacterBody2D = $NPCs/kalimba
-@onready var kalimbaSprite: AnimatedSprite2D = $NPCs/kalimba/AnimatedSprite2D
+@onready var timer: Timer = $Camera2D/Timer
+@onready var charDialogue: Label = $Camera2D/Dialogue
+@onready var charName: Label = $Camera2D/Name
 
 
-#Tabs
-@onready var tabs: Friend = $NPCs/tabs
-@onready var tabsSprite: AnimatedSprite2D = $NPCs/tabs/AnimatedSprite2D
-
-
-#Piri
-@onready var piri: Friend = $NPCs/piri
-@onready var piriSprite: AnimatedSprite2D = $NPCs/piri/AnimatedSprite2D
-
-
-@onready var friendsAndSprites = {
-	miro: miroSprite,
-	keno: kenoSprite,
-	kalimba: kalimbaSprite,
-	tabs: tabsSprite,
-	piri: piriSprite
-}
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("interact"):
+		for friend in get_tree().get_nodes_in_group("friends"):
+			var dialogue = friend.dialogueDictionary
+			if friend.collisionState:
+				timer.start()
+				charName.text = friend.friendName
+				charDialogue.text = dialogue[friend.friendName]
+				break
+			
+			#print("{0}: {1}".format([friend.name, friend.collisionState]))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -72,9 +49,16 @@ func _process(delta: float) -> void:
 			camera_2d.position.x = 10800
 	
 	#Handling NPC sprite flipping
-	for friend in friendsAndSprites:
+	for friend in get_tree().get_nodes_in_group("friends"):
+		var sprite = friend.get_node_or_null("AnimatedSprite2D") as AnimatedSprite2D
+		
 		if bobertoPos > friend.position.x:
-			friendsAndSprites[friend].flip_h = true
+			sprite.flip_h = true
 		else:
-			friendsAndSprites[friend].flip_h = false
+			sprite.flip_h = false
 	
+
+
+func _on_timer_timeout() -> void:
+	charName.text = ""
+	charDialogue.text = ""

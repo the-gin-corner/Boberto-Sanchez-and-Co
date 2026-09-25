@@ -2,11 +2,12 @@ extends Friend
 
 func _ready() -> void:
 	friendName = "Keno"
+	collisionState = false;
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print("Hello there, Boberto!")
+	collisionState = true
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
-	print("Goodbye, Boberto!")
+	collisionState = true
