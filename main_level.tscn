@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cfljt1bhah8l1" path="res://npcs/keno.tscn" id="5_4mnpp"]
 [ext_resource type="Texture2D" uid="uid://6e0ueex53stu" path="res://sprites/tileset.png" id="5_5ymk8"]
 [ext_resource type="PackedScene" uid="uid://dckvh8ckqlo1f" path="res://npcs/piri.tscn" id="8_eqmdw"]
+[ext_resource type="AudioStream" uid="uid://bpyktaxgjyp1f" path="res://musicAndSFX/Main_Boberto_walking.mp3" id="10_5fjre"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4mnpp"]
 texture = ExtResource("5_5ymk8")
@@ -73,6 +74,10 @@ offset_top = 32.0
 offset_right = 68.0
 offset_bottom = 55.0
 theme_override_fonts/font = ExtResource("4_uhmka")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Camera2D" unique_id=976548414]
+stream = ExtResource("10_5fjre")
+autoplay = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1902772626]
 
