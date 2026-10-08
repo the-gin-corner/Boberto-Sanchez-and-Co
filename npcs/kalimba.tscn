@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cu5gt2rq0m12e" path="res://sprites/kalimba.png" id="1_0d1di"]
 [ext_resource type="Script" uid="uid://bm20cxju2ylkl" path="res://scripts/kalimba.gd" id="1_dxu3y"]
+[ext_resource type="Texture2D" uid="uid://dinr07m3w1nbu" path="res://sprites/Interaction_Icon.png" id="3_mbgem"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hhlkb"]
 
@@ -30,6 +31,28 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_ajlr4"]
 radius = 20.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_xfnou"]
+atlas = ExtResource("3_mbgem")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8ovt"]
+atlas = ExtResource("3_mbgem")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2v5yi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xfnou")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p8ovt")
+}],
+"loop": 1,
+"name": &"bob",
+"speed": 3.0
+}]
+
 [node name="kalimba" type="CharacterBody2D" unique_id=894485031]
 script = ExtResource("1_dxu3y")
 
@@ -48,6 +71,12 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=101561500]
 shape = SubResource("CircleShape2D_ajlr4")
+
+[node name="icon" type="AnimatedSprite2D" parent="." unique_id=1257247476]
+position = Vector2(0, -12)
+scale = Vector2(0.375, 0.375)
+sprite_frames = SubResource("SpriteFrames_2v5yi")
+animation = &"bob"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

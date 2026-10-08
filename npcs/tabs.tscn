@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://t2cfmmvsy6uc" path="res://sprites/tabs.png" id="1_bia0e"]
 [ext_resource type="Script" uid="uid://ywjk3besswgm" path="res://scripts/tabs.gd" id="1_yqsut"]
+[ext_resource type="Texture2D" uid="uid://dinr07m3w1nbu" path="res://sprites/Interaction_Icon.png" id="3_rw6uw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yqsut"]
 
@@ -30,6 +31,28 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_a5hpv"]
 radius = 20.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_xfnou"]
+atlas = ExtResource("3_rw6uw")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8ovt"]
+atlas = ExtResource("3_rw6uw")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gvr7p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xfnou")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p8ovt")
+}],
+"loop": 1,
+"name": &"bob",
+"speed": 3.0
+}]
+
 [node name="tabs" type="CharacterBody2D" unique_id=843681475]
 script = ExtResource("1_yqsut")
 
@@ -47,6 +70,12 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1033617688]
 shape = SubResource("CircleShape2D_a5hpv")
+
+[node name="icon" type="AnimatedSprite2D" parent="." unique_id=517900530]
+position = Vector2(0, -9)
+scale = Vector2(0.375, 0.375)
+sprite_frames = SubResource("SpriteFrames_gvr7p")
+animation = &"bob"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

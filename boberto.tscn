@@ -67,3 +67,4 @@ animation = &"jump"
 
 [node name="jump sfx" type="AudioStreamPlayer2D" parent="." unique_id=169167332]
 stream = ExtResource("3_n1p7s")
+panning_strength = 0.0
