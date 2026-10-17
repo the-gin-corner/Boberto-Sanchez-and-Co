@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://6e0ueex53stu" path="res://sprites/tileset.png" id="5_5ymk8"]
 [ext_resource type="PackedScene" uid="uid://dckvh8ckqlo1f" path="res://npcs/piri.tscn" id="8_eqmdw"]
 [ext_resource type="AudioStream" uid="uid://bpyktaxgjyp1f" path="res://musicAndSFX/Main_Boberto_walking.mp3" id="10_5fjre"]
+[ext_resource type="PackedScene" uid="uid://cgw1eydtxyg01" path="res://organPaper.tscn" id="11_oeaww"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4mnpp"]
 texture = ExtResource("5_5ymk8")
@@ -32,7 +33,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_4mnpp")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
-size = Vector2(546, 767)
+size = Vector2(546, 650.5)
 
 [node name="Node2D" type="Node2D" unique_id=1545534466]
 script = ExtResource("1_bhu08")
@@ -53,36 +54,10 @@ unique_name_in_owner = true
 position = Vector2(148, 318)
 scale = Vector2(6.75, 6.75)
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=576842596]
-unique_name_in_owner = true
-offset = Vector2(575, 325)
-
-[node name="Timer" type="Timer" parent="Camera2D" unique_id=1288120273]
-process_callback = 0
-wait_time = 5.0
-
-[node name="Dialogue" type="Label" parent="Camera2D" unique_id=1796519781]
-offset_left = 28.0
-offset_top = 70.0
-offset_right = 68.0
-offset_bottom = 93.0
-theme_override_fonts/font = ExtResource("4_uhmka")
-
-[node name="Name" type="Label" parent="Camera2D" unique_id=1407370506]
-offset_left = 28.0
-offset_top = 32.0
-offset_right = 68.0
-offset_bottom = 55.0
-theme_override_fonts/font = ExtResource("4_uhmka")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Camera2D" unique_id=976548414]
-stream = ExtResource("10_5fjre")
-autoplay = true
-
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1902772626]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1793845990]
-position = Vector2(-274, 383)
+position = Vector2(-274, 324.75)
 shape = SubResource("RectangleShape2D_yf5fn")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1732621485]
@@ -113,6 +88,38 @@ scale = Vector2(6.75, 6.75)
 position = Vector2(4112, 346)
 scale = Vector2(6.75, 6.75)
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=576842596]
+unique_name_in_owner = true
+offset = Vector2(575, 325)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Camera2D" unique_id=976548414]
+stream = ExtResource("10_5fjre")
+autoplay = true
+
+[node name="Timer" type="Timer" parent="Camera2D" unique_id=1288120273]
+process_callback = 0
+wait_time = 5.0
+
+[node name="Dialogue" type="Label" parent="Camera2D" unique_id=1796519781]
+offset_left = 28.0
+offset_top = 70.0
+offset_right = 68.0
+offset_bottom = 93.0
+theme_override_fonts/font = ExtResource("4_uhmka")
+
+[node name="Name" type="Label" parent="Camera2D" unique_id=1407370506]
+offset_left = 28.0
+offset_top = 32.0
+offset_right = 68.0
+offset_bottom = 55.0
+theme_override_fonts/font = ExtResource("4_uhmka")
+
+[node name="OrganPaper" parent="Camera2D" unique_id=1577516010 instance=ExtResource("11_oeaww")]
+unique_name_in_owner = true
+visible = false
+offset_top = 2.0
+offset_bottom = 2.0
+
 [connection signal="timeout" from="Camera2D/Timer" to="." method="_on_timer_timeout"]
 
 [editable path="NPCs/piri"]
@@ -120,3 +127,4 @@ scale = Vector2(6.75, 6.75)
 [editable path="NPCs/kalimba"]
 [editable path="NPCs/miro"]
 [editable path="NPCs/keno"]
+[editable path="Camera2D/OrganPaper"]

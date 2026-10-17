@@ -29,8 +29,8 @@ func _unhandled_input(event: InputEvent) -> void:
 				charName.text = friend.friendName
 				charDialogue.text = dialogue[friend.friendName]
 				break
-	if event.is_action_pressed("openOrganization"):
-		print("Opening Organization table")
+			
+			
 			
 			#print("{0}: {1}".format([friend.name, friend.collisionState]))
 
@@ -47,7 +47,6 @@ func _process(delta: float) -> void:
 			
 	
 	switchRooms()
-	
 
 #Credit to DevDrache on YouTube for the mini tutorial on this
 func switchRooms():

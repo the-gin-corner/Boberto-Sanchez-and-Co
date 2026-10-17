@@ -2,10 +2,14 @@ extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var jump_sfx: AudioStreamPlayer2D = $"jump sfx"
+@onready var organ_paper: Control = %OrganPaper
+@onready var open_player: AudioStreamPlayer2D = $openPlayer
+@onready var close_player: AudioStreamPlayer2D = $closePlayer
+@onready var organPaperAnims: AnimationPlayer = $"../Camera2D/OrganPaper/AnimationPlayer"
 
 const SPEED = 200.0
 const JUMP_VELOCITY = -400.0
-
+var paperVisible = false
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -17,7 +21,15 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		jump_sfx.play()
+	
+	if Input.is_action_just_pressed("openOrganization"):
+		paperVisible = !paperVisible
 		
+		if paperVisible:
+			organ_paper.visible = true
+			organPaperAnims.play("Paper Up")
+		if !paperVisible:
+			organPaperAnims.play("Paper Down")
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
