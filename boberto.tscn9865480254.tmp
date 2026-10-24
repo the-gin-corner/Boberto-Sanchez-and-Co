@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://wftt6fjeof78"]
+
+[ext_resource type="Texture2D" uid="uid://bfsppoukb7dg7" path="res://sprites/New Piskel(10).png" id="1_6t5b3"]
+[ext_resource type="Script" uid="uid://d32ne4xl3jdvm" path="res://scripts/boberto.gd" id="1_bvjai"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 6.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvjai"]
+atlas = ExtResource("1_6t5b3")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1p7s"]
+atlas = ExtResource("1_6t5b3")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o5rv1"]
+atlas = ExtResource("1_6t5b3")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3mig"]
+atlas = ExtResource("1_6t5b3")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bvjai")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n1p7s")
+}],
+"loop": 1,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o5rv1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3mig")
+}],
+"loop": 1,
+"name": &"walking",
+"speed": 3.0
+}]
+
+[node name="Boberto" type="CharacterBody2D" unique_id=933461596]
+collision_layer = 3
+script = ExtResource("1_bvjai")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1038435216]
+shape = SubResource("CircleShape2D_g4v7s")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=141435082]
+position = Vector2(0, -2)
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+animation = &"jump"

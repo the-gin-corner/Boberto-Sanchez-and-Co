@@ -1,0 +1,273 @@
+[gd_scene format=4 uid="uid://dqk4q801l8pgt"]
+
+[ext_resource type="Script" uid="uid://c7m2rh3521fx2" path="res://scripts/main_level.gd" id="1_bhu08"]
+[ext_resource type="PackedScene" uid="uid://wftt6fjeof78" path="res://boberto.tscn" id="1_bw3m6"]
+[ext_resource type="PackedScene" uid="uid://b3jsjugwlwggr" path="res://npcs/kalimba.tscn" id="4_4mnpp"]
+[ext_resource type="PackedScene" uid="uid://ub7dran6u78f" path="res://npcs/miro.tscn" id="4_05as6"]
+[ext_resource type="PackedScene" uid="uid://c4okobjv4l3mk" path="res://npcs/tabs.tscn" id="4_ctebd"]
+[ext_resource type="FontFile" uid="uid://fubqg3mad454" path="res://Boxel_v0.1_beta.ttf" id="4_uhmka"]
+[ext_resource type="PackedScene" uid="uid://cfljt1bhah8l1" path="res://npcs/keno.tscn" id="5_4mnpp"]
+[ext_resource type="Texture2D" uid="uid://6e0ueex53stu" path="res://sprites/tileset.png" id="5_5ymk8"]
+[ext_resource type="PackedScene" uid="uid://dckvh8ckqlo1f" path="res://npcs/piri.tscn" id="8_eqmdw"]
+[ext_resource type="AudioStream" uid="uid://bpyktaxgjyp1f" path="res://musicAndSFX/Main_Boberto_walking.mp3" id="10_5fjre"]
+[ext_resource type="PackedScene" uid="uid://cgw1eydtxyg01" path="res://organPaper.tscn" id="11_oeaww"]
+[ext_resource type="AudioStream" uid="uid://dirlbl6dudnwn" path="res://musicAndSFX/jingle.wav" id="12_aonjr"]
+[ext_resource type="PackedScene" uid="uid://6ojotsj8yfyp" path="res://notifications.tscn" id="12_htena"]
+[ext_resource type="AudioStream" uid="uid://bpkss32ostbuq" path="res://musicAndSFX/notification.wav" id="13_do8ha"]
+[ext_resource type="Script" uid="uid://biss8y7cxc7rp" path="res://color_rect_2.gd" id="15_xqiim"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xqiim"]
+texture = ExtResource("5_5ymk8")
+texture_region_size = Vector2i(80, 80)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, -40, 40, -40, 40, 40, -40, 40)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, -40, 40, -40, 40, 40, -40, 40)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, -40, 40, -40, 40, 40, -40, 40)
+2:0/0/physics_layer_0/polygon_0/one_way = true
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, -40, 40, -40, 40, 40, -40, 40)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40, -40, 40, -40, 40, 40, -40, 40)
+
+[sub_resource type="TileSet" id="TileSet_57qmd"]
+tile_size = Vector2i(80, 80)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_xqiim")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
+size = Vector2(546, 650.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aonjr"]
+size = Vector2(1179, 802)
+
+[sub_resource type="Animation" id="Animation_6pb3s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_e3ldi"]
+resource_name = "fade"
+length = 3.0000000000000004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Final Area/Jingle")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("12_aonjr")
+}],
+"times": PackedFloat32Array(0.1)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ah7fh"]
+_data = {
+&"RESET": SubResource("Animation_6pb3s"),
+&"fade": SubResource("Animation_e3ldi")
+}
+
+[node name="Node2D" type="Node2D" unique_id=1545534466]
+script = ExtResource("1_bhu08")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=184914476]
+offset_left = -1664.0
+offset_top = -1195.0
+offset_right = 15505.0
+offset_bottom = 8523.0
+color = Color(0, 0, 0, 1)
+
+[node name="Level" type="TileMapLayer" parent="." unique_id=1868578520]
+tile_map_data = PackedByteArray("AAD//wYAAAAAAAAAAAAAAAYAAAAAAAAAAAABAAYAAAAAAAAAAAACAAYAAAAAAAAAAAADAAYAAAAAAAAAAAAEAAYAAAAAAAAAAAAFAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAIAAUAAAAAAAAAAAAJAAUAAAAAAAAAAAAKAAUAAAAAAAAAAAALAAUAAAAAAAAAAAAMAAYAAAAAAAAAAAANAAYAAAAAAAAAAAAOAAYAAAAAAAAAAAAPAAYAAAAAAAAAAAAQAAYAAAAAAAAAAAARAAYAAAAAAAAAAAASAAYAAAAAAAAAAAATAAYAAAAAAAAAAAAUAAYAAAAAAAAAAAAVAAYAAAAAAAAAAAAWAAYAAAAAAAAAAAAXAAYAAAAAAAAAAAAYAAYAAAAAAAAAAAAZAAYAAAAAAAAAAAAaAAYAAAAAAAAAAAAbAAYAAAAAAAAAAAAcAAYAAAAAAAAAAAAdAAYAAAAAAAAAAAAeAAYAAAAAAAAAAAAfAAYAAAABAAAAAAAgAAYAAAABAAAAAAAhAAYAAAABAAAAAAAiAAYAAAABAAAAAAAjAAYAAAABAAAAAAAkAAYAAAABAAAAAAAlAAUAAAABAAAAAAAmAAQAAAABAAAAAAAnAAQAAAABAAAAAAAoAAQAAAABAAAAAAApAAQAAAABAAAAAAAqAAUAAAABAAAAAAArAAUAAAABAAAAAAAsAAYAAAABAAAAAAAtAAYAAAABAAAAAAAuAAYAAAABAAAAAAAvAAYAAAABAAAAAAAwAAYAAAABAAAAAAAxAAUAAAABAAAAAAAyAAUAAAABAAAAAAAzAAUAAAABAAAAAAA7AAYAAAABAAAAAAA6AAYAAAABAAAAAAA5AAYAAAABAAAAAAA4AAYAAAABAAAAAAA3AAYAAAABAAAAAAA2AAYAAAABAAAAAAA1AAYAAAABAAAAAAA0AAYAAAABAAAAAAA8AAYAAAABAAEAAAA9AAYAAAABAAEAAAA+AAYAAAABAAEAAAA/AAcAAAABAAEAAABAAAcAAAABAAEAAABBAAcAAAABAAEAAABCAAcAAAABAAEAAABDAAYAAAABAAEAAABEAAYAAAABAAEAAABFAAYAAAABAAEAAABGAAUAAAABAAEAAABHAAUAAAABAAEAAABIAAUAAAABAAEAAABJAAQAAAABAAEAAABKAAQAAAABAAEAAABLAAQAAAABAAEAAABMAAQAAAABAAEAAABNAAQAAAABAAEAAABOAAQAAAABAAEAAABPAAUAAAABAAEAAABQAAUAAAABAAEAAABaAAYAAAABAAEAAABZAAYAAAABAAEAAABYAAYAAAABAAEAAABXAAYAAAABAAEAAABWAAYAAAABAAEAAABVAAYAAAABAAEAAABUAAYAAAABAAEAAABTAAYAAAABAAEAAABSAAYAAAABAAEAAABRAAYAAAABAAEAAABbAAYAAAAAAAEAAABcAAYAAAAAAAEAAABdAAYAAAAAAAEAAABeAAYAAAAAAAEAAABfAAYAAAAAAAEAAABgAAUAAAAAAAEAAABhAAUAAAAAAAEAAABiAAUAAAAAAAEAAABjAAUAAAAAAAEAAABkAAQAAAAAAAEAAABlAAQAAAAAAAEAAABmAAUAAAAAAAEAAABnAAUAAAAAAAEAAABoAAYAAAAAAAEAAABpAAYAAAAAAAEAAABqAAYAAAAAAAEAAABrAAYAAAAAAAEAAABsAAYAAAAAAAEAAABtAAYAAAAAAAEAAABuAAUAAAAAAAEAAABvAAUAAAAAAAEAAABwAAYAAAAAAAEAAABxAAYAAAAAAAEAAAByAAUAAAAAAAEAAABzAAQAAAAAAAEAAAB0AAUAAAAAAAEAAAB1AAYAAAAAAAEAAAB2AAYAAAAAAAEAAAB3AAYAAAAAAAEAAAB4AAYAAAAAAAEAAAB5AAYAAAAAAAEAAAB6AAYAAAAAAAEAAAB7AAYAAAACAAAAAAB8AAYAAAACAAAAAAB9AAYAAAACAAAAAAB+AAYAAAACAAAAAAB/AAYAAAACAAAAAACAAAUAAAACAAAAAACAAAYAAAACAAAAAACBAAUAAAACAAAAAACBAAYAAAACAAAAAACCAAUAAAACAAAAAACCAAYAAAACAAAAAACDAAUAAAACAAAAAACDAAYAAAACAAAAAACEAAYAAAACAAAAAACFAAYAAAACAAAAAACGAAYAAAACAAAAAACHAAYAAAACAAAAAACIAAYAAAACAAAAAACJAAUAAAACAAAAAACJAAYAAAACAAAAAACKAAUAAAACAAAAAACKAAYAAAACAAAAAACLAAUAAAACAAAAAACLAAYAAAACAAAAAACMAAYAAAACAAAAAACNAAYAAAACAAAAAACOAAYAAAACAAAAAACPAAYAAAACAAAAAACQAAYAAAACAAAAAACRAAYAAAACAAAAAACSAAYAAAACAAAAAACTAAYAAAACAAAAAACUAAYAAAACAAAAAACVAAYAAAACAAAAAACWAAYAAAACAAAAAAA=")
+tile_set = SubResource("TileSet_57qmd")
+
+[node name="boberto" parent="." unique_id=933461596 instance=ExtResource("1_bw3m6")]
+unique_name_in_owner = true
+position = Vector2(148, 318)
+scale = Vector2(6.75, 6.75)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1902772626]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1793845990]
+position = Vector2(-274, 324.75)
+shape = SubResource("RectangleShape2D_yf5fn")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1732621485]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=447477309]
+position = Vector2(12174, 384)
+shape = SubResource("RectangleShape2D_yf5fn")
+
+[node name="NPCs" type="Node" parent="." unique_id=126695886]
+
+[node name="piri" parent="NPCs" unique_id=380311125 groups=["friends"] instance=ExtResource("8_eqmdw")]
+position = Vector2(10394, 346)
+scale = Vector2(6.75, 6.75)
+
+[node name="tabs" parent="NPCs" unique_id=843681475 groups=["friends"] instance=ExtResource("4_ctebd")]
+position = Vector2(9248, 267)
+scale = Vector2(6.75, 6.75)
+
+[node name="kalimba" parent="NPCs" unique_id=894485031 groups=["friends"] instance=ExtResource("4_4mnpp")]
+position = Vector2(6745, 426)
+scale = Vector2(6.75, 6.75)
+
+[node name="miro" parent="NPCs" unique_id=799427488 groups=["friends"] instance=ExtResource("4_05as6")]
+position = Vector2(1746, 420)
+scale = Vector2(6.75, 6.75)
+
+[node name="keno" parent="NPCs" unique_id=1864498742 groups=["friends"] instance=ExtResource("5_4mnpp")]
+position = Vector2(4112, 346)
+scale = Vector2(6.75, 6.75)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=576842596]
+unique_name_in_owner = true
+offset = Vector2(575, 325)
+
+[node name="Fail" type="AudioStreamPlayer2D" parent="Camera2D" unique_id=2118185129]
+stream = ExtResource("13_do8ha")
+
+[node name="Walking Music" type="AudioStreamPlayer2D" parent="Camera2D" unique_id=976548414]
+stream = ExtResource("10_5fjre")
+autoplay = true
+
+[node name="Timer" type="Timer" parent="Camera2D" unique_id=1288120273]
+process_callback = 0
+wait_time = 5.0
+
+[node name="Dialogue" type="Label" parent="Camera2D" unique_id=1796519781]
+offset_left = 28.0
+offset_top = 70.0
+offset_right = 68.0
+offset_bottom = 93.0
+theme_override_fonts/font = ExtResource("4_uhmka")
+
+[node name="Name" type="Label" parent="Camera2D" unique_id=1407370506]
+offset_left = 28.0
+offset_top = 32.0
+offset_right = 68.0
+offset_bottom = 55.0
+theme_override_fonts/font = ExtResource("4_uhmka")
+
+[node name="Notificationtimer" type="Timer" parent="Camera2D" unique_id=123601928]
+process_callback = 0
+wait_time = 3.0
+
+[node name="OrganPaper" parent="Camera2D" unique_id=1577516010 instance=ExtResource("11_oeaww")]
+unique_name_in_owner = true
+visible = false
+offset_top = 2.0
+offset_bottom = 2.0
+
+[node name="Area2D" parent="Camera2D/OrganPaper/Paper/KalimbaName" parent_id_path=PackedInt32Array(1577516010, 828372335) index="1" unique_id=1644228796]
+monitoring = false
+
+[node name="Area2D" parent="Camera2D/OrganPaper/Paper/KenoName" parent_id_path=PackedInt32Array(1577516010, 1055020139) index="1" unique_id=357640740]
+monitoring = false
+
+[node name="Area2D" parent="Camera2D/OrganPaper/Paper/MiroName" parent_id_path=PackedInt32Array(1577516010, 555200305) index="1" unique_id=332546477]
+monitoring = false
+
+[node name="Area2D" parent="Camera2D/OrganPaper/Paper/PiriName" parent_id_path=PackedInt32Array(1577516010, 1033408570) index="1" unique_id=1367505602]
+monitoring = false
+
+[node name="Area2D" parent="Camera2D/OrganPaper/Paper/TabsName" parent_id_path=PackedInt32Array(1577516010, 1055277861) index="1" unique_id=1319980312]
+monitoring = false
+
+[node name="Notifications" parent="Camera2D" unique_id=1789590900 instance=ExtResource("12_htena")]
+unique_name_in_owner = true
+
+[node name="Label" type="Label" parent="." unique_id=306706998]
+offset_left = 400.0
+offset_top = 131.0
+offset_right = 823.0
+offset_bottom = 248.0
+theme_override_fonts/font = ExtResource("4_uhmka")
+text = "Hello Boberto!
+
+You remember how to do things, right?
+
+Use \"e\" to interact and use \"TAB\" to open 
+the organization template"
+
+[node name="Label2" type="Label" parent="." unique_id=1942551649]
+offset_left = 11325.0
+offset_top = 179.0
+offset_right = 11748.0
+offset_bottom = 296.0
+theme_override_fonts/font = ExtResource("4_uhmka")
+text = "Hello Boberto!
+
+Use the template to organize your friends for 
+the event! There are two seats on the top and
+three on the bottom. 
+
+Use the Mouse in order to move your friends 
+around! Press ENTER to submit!"
+
+[node name="Final Area" type="Area2D" parent="." unique_id=530262867]
+collision_layer = 2
+collision_mask = 2
+
+[node name="Jingle" type="AudioStreamPlayer2D" parent="Final Area" unique_id=121258807]
+position = Vector2(11365, 282)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Final Area" unique_id=873249791]
+position = Vector2(11358.5, 346)
+shape = SubResource("RectangleShape2D_aonjr")
+debug_color = Color(0.51695704, 0.56851566, 0.26816228, 0.41960785)
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=670188459]
+visible = false
+offset_left = 10707.0
+offset_top = -78.0
+offset_right = 12037.0
+offset_bottom = 849.0
+color = Color(0, 0, 0, 1)
+script = ExtResource("15_xqiim")
+
+[node name="Fade" type="AnimationPlayer" parent="." unique_id=1351891420]
+libraries/ = SubResource("AnimationLibrary_ah7fh")
+
+[node name="Transition Timer" type="Timer" parent="." unique_id=1384129828]
+wait_time = 8.0
+
+[connection signal="timeout" from="Camera2D/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Camera2D/Notificationtimer" to="." method="_on_notificationtimer_timeout"]
+[connection signal="body_entered" from="Final Area" to="." method="_on_final_area_body_entered"]
+[connection signal="timeout" from="Transition Timer" to="." method="_on_transition_timer_timeout"]
+
+[editable path="NPCs/piri"]
+[editable path="NPCs/tabs"]
+[editable path="NPCs/kalimba"]
+[editable path="NPCs/miro"]
+[editable path="NPCs/keno"]
+[editable path="Camera2D/OrganPaper"]
+[editable path="Camera2D/Notifications"]

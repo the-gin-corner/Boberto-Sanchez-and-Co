@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://6ojotsj8yfyp"]
+
+[ext_resource type="Script" uid="uid://cykdbwkhnlxhv" path="res://scripts/notifications.gd" id="1_jw8ll"]
+[ext_resource type="FontFile" uid="uid://fubqg3mad454" path="res://Boxel_v0.1_beta.ttf" id="1_yueu2"]
+
+[node name="Notifications" type="Control" unique_id=1789590900]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jw8ll")
+
+[node name="WrongPlacement" type="ColorRect" parent="." unique_id=1502651521]
+visible = false
+layout_mode = 0
+offset_top = 208.0
+offset_right = 1151.0
+offset_bottom = 435.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="WrongPlacement" unique_id=1826552320]
+layout_mode = 0
+offset_left = 277.0
+offset_top = 95.0
+offset_right = 877.0
+offset_bottom = 134.0
+theme_override_fonts/font = ExtResource("1_yueu2")
+theme_override_font_sizes/font_size = 25
+text = "Uh oh! Someone is in the wrong place!"
+vertical_alignment = 1
+
+[node name="CRWP" type="ColorRect" parent="." unique_id=1542747822]
+visible = false
+layout_mode = 0
+offset_top = 208.0
+offset_right = 1152.0
+offset_bottom = 435.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="CRWP" unique_id=277756554]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 99.0
+offset_right = 1055.0
+offset_bottom = 125.0
+theme_override_fonts/font = ExtResource("1_yueu2")
+theme_override_font_sizes/font_size = 25
+text = "Great job, Boberto! Now go to the final area and resubmit!"

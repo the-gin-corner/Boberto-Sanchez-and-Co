@@ -1,0 +1,303 @@
+[gd_scene format=3 uid="uid://cgw1eydtxyg01"]
+
+[ext_resource type="Script" uid="uid://bvsp0abupfqun" path="res://scripts/organ_paper.gd" id="1_mw3se"]
+[ext_resource type="Texture2D" uid="uid://buo2fgp3j2ck4" path="res://sprites/organizationpaper.png" id="1_wwmmk"]
+[ext_resource type="Texture2D" uid="uid://3nlp7t60ju61" path="res://sprites/kalimbaName.png" id="3_kelqs"]
+[ext_resource type="Script" uid="uid://ckcohmjof6ts7" path="res://scripts/kalimba_name.gd" id="4_4ox31"]
+[ext_resource type="Texture2D" uid="uid://dnoidoluih1um" path="res://sprites/kenoName.png" id="4_euo16"]
+[ext_resource type="Texture2D" uid="uid://dvrtkm1asrulf" path="res://sprites/miroName.png" id="5_g7jgr"]
+[ext_resource type="Texture2D" uid="uid://b51q4150l51l2" path="res://sprites/piriName.png" id="6_4ox31"]
+[ext_resource type="Script" uid="uid://376sgg6vi2q0" path="res://scripts/keno_name.gd" id="6_gaifs"]
+[ext_resource type="Texture2D" uid="uid://ogq2lqsqeqp1" path="res://sprites/tabsName.png" id="7_gaifs"]
+[ext_resource type="AudioStream" uid="uid://csu7k0gco1rfo" path="res://musicAndSFX/paperCrumple1.mp3" id="8_g7jgr"]
+[ext_resource type="Script" uid="uid://dlbx76j0rvjye" path="res://scripts/miro_name.gd" id="8_n011y"]
+[ext_resource type="AudioStream" uid="uid://cuspan3fn2gpi" path="res://musicAndSFX/paperCrumple2.mp3" id="9_4ox31"]
+[ext_resource type="Script" uid="uid://rttp4r1lhu6d" path="res://scripts/piri_name.gd" id="10_25o17"]
+[ext_resource type="Script" uid="uid://8rcv77187exl" path="res://scripts/tabs_name.gd" id="12_546tb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3gngh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fcnqv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7numd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p1u0y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5s0fj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ox31"]
+radius = 37.93
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 37.93
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yf5fn"]
+radius = 37.93
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_57qmd"]
+radius = 37.93
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d0u6y"]
+radius = 37.93
+
+[sub_resource type="Animation" id="Animation_qqkkx"]
+resource_name = "Paper Down"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Paper:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(324, -0.25, 0, 0.36666667, -3, 972, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("closePlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("9_4ox31")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="Animation" id="Animation_wwmmk"]
+resource_name = "Paper Up"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Paper:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(975, -0.25, 0, 0.36666667, -3, 324, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("openPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_g7jgr")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="Animation" id="Animation_mw3se"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Paper:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(328, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qqkkx"]
+_data = {
+&"Paper Down": SubResource("Animation_qqkkx"),
+&"Paper Up": SubResource("Animation_wwmmk"),
+&"RESET": SubResource("Animation_mw3se")
+}
+
+[node name="OrganPaper" type="Control" unique_id=1577516010]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mw3se")
+
+[node name="Paper" type="Sprite2D" parent="." unique_id=1329279764]
+position = Vector2(574, 328)
+texture = ExtResource("1_wwmmk")
+
+[node name="KalimbaName" type="Sprite2D" parent="Paper" unique_id=828372335]
+position = Vector2(-177, -145)
+texture = ExtResource("3_kelqs")
+script = ExtResource("4_4ox31")
+
+[node name="Button" type="Button" parent="Paper/KalimbaName" unique_id=2062596548]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -67.0
+offset_top = -23.0
+offset_right = 69.0
+offset_bottom = 23.0
+
+[node name="Area2D" type="Area2D" parent="Paper/KalimbaName" unique_id=1644228796]
+collision_layer = 384
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paper/KalimbaName/Area2D" unique_id=2110448663]
+shape = SubResource("CircleShape2D_3gngh")
+
+[node name="KenoName" type="Sprite2D" parent="Paper" unique_id=1055020139]
+position = Vector2(-22, -141)
+texture = ExtResource("4_euo16")
+script = ExtResource("6_gaifs")
+
+[node name="Button" type="Button" parent="Paper/KenoName" unique_id=1566123614]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -47.0
+offset_top = -35.0
+offset_right = 50.0
+offset_bottom = 34.0
+
+[node name="Area2D" type="Area2D" parent="Paper/KenoName" unique_id=357640740]
+collision_layer = 384
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paper/KenoName/Area2D" unique_id=2001840021]
+position = Vector2(0, 15)
+shape = SubResource("CircleShape2D_fcnqv")
+
+[node name="MiroName" type="Sprite2D" parent="Paper" unique_id=555200305]
+position = Vector2(127, -127)
+texture = ExtResource("5_g7jgr")
+script = ExtResource("8_n011y")
+
+[node name="Button" type="Button" parent="Paper/MiroName" unique_id=1468052909]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -53.0
+offset_top = -29.0
+offset_right = 55.0
+offset_bottom = 31.0
+
+[node name="Area2D" type="Area2D" parent="Paper/MiroName" unique_id=332546477]
+collision_layer = 384
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paper/MiroName/Area2D" unique_id=437772039]
+position = Vector2(3, 13)
+shape = SubResource("CircleShape2D_7numd")
+
+[node name="PiriName" type="Sprite2D" parent="Paper" unique_id=1033408570]
+position = Vector2(-192, -64)
+texture = ExtResource("6_4ox31")
+script = ExtResource("10_25o17")
+
+[node name="Button" type="Button" parent="Paper/PiriName" unique_id=236089087]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -46.0
+offset_top = -28.0
+offset_right = 48.0
+offset_bottom = 28.0
+
+[node name="Area2D" type="Area2D" parent="Paper/PiriName" unique_id=1367505602]
+collision_layer = 384
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paper/PiriName/Area2D" unique_id=1715610967]
+position = Vector2(1, 7)
+shape = SubResource("CircleShape2D_p1u0y")
+
+[node name="TabsName" type="Sprite2D" parent="Paper" unique_id=1055277861]
+position = Vector2(-41, -63)
+texture = ExtResource("7_gaifs")
+script = ExtResource("12_546tb")
+
+[node name="Button" type="Button" parent="Paper/TabsName" unique_id=1625875326]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -62.0
+offset_top = -26.0
+offset_right = 60.0
+offset_bottom = 26.0
+
+[node name="Area2D" type="Area2D" parent="Paper/TabsName" unique_id=1319980312]
+collision_layer = 384
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paper/TabsName/Area2D" unique_id=2017197270]
+position = Vector2(3, 12)
+shape = SubResource("CircleShape2D_5s0fj")
+
+[node name="Node2D" type="Node2D" parent="Paper" unique_id=1104965446]
+
+[node name="Point 1" type="Area2D" parent="Paper/Node2D" unique_id=2031424084]
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paper/Node2D/Point 1" unique_id=1970223701]
+position = Vector2(-159, 13)
+shape = SubResource("CircleShape2D_4ox31")
+
+[node name="Point 2" type="Area2D" parent="Paper/Node2D" unique_id=1057052689]
+position = Vector2(-574, -324)
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paper/Node2D/Point 2" unique_id=945695333]
+position = Vector2(556, 336)
+shape = SubResource("CircleShape2D_g4v7s")
+
+[node name="Point 3" type="Area2D" parent="Paper/Node2D" unique_id=1908791109]
+position = Vector2(-574, -324)
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paper/Node2D/Point 3" unique_id=545772328]
+position = Vector2(355, 431)
+shape = SubResource("CircleShape2D_yf5fn")
+
+[node name="Point 4" type="Area2D" parent="Paper/Node2D" unique_id=976639220]
+position = Vector2(-574, -324)
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paper/Node2D/Point 4" unique_id=1946539718]
+position = Vector2(499, 430)
+shape = SubResource("CircleShape2D_57qmd")
+
+[node name="Point 5" type="Area2D" parent="Paper/Node2D" unique_id=1965021475]
+position = Vector2(-574, -324)
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paper/Node2D/Point 5" unique_id=1571660197]
+position = Vector2(646, 429)
+shape = SubResource("CircleShape2D_d0u6y")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=983781981]
+libraries/ = SubResource("AnimationLibrary_qqkkx")
+
+[node name="openPlayer" type="AudioStreamPlayer2D" parent="." unique_id=385750353]
+
+[node name="closePlayer" type="AudioStreamPlayer2D" parent="." unique_id=19326550]
+
+[connection signal="button_down" from="Paper/KalimbaName/Button" to="Paper/KalimbaName" method="_on_button_button_down"]
+[connection signal="button_up" from="Paper/KalimbaName/Button" to="Paper/KalimbaName" method="_on_button_button_up"]
+[connection signal="button_down" from="Paper/KenoName/Button" to="Paper/KenoName" method="_on_button_button_down"]
+[connection signal="button_up" from="Paper/KenoName/Button" to="Paper/KenoName" method="_on_button_button_up"]
+[connection signal="button_down" from="Paper/MiroName/Button" to="Paper/MiroName" method="_on_button_button_down"]
+[connection signal="button_up" from="Paper/MiroName/Button" to="Paper/MiroName" method="_on_button_button_up"]
+[connection signal="button_down" from="Paper/PiriName/Button" to="Paper/PiriName" method="_on_button_button_down"]
+[connection signal="button_up" from="Paper/PiriName/Button" to="Paper/PiriName" method="_on_button_button_up"]
+[connection signal="button_down" from="Paper/TabsName/Button" to="Paper/TabsName" method="_on_button_button_down"]
+[connection signal="button_up" from="Paper/TabsName/Button" to="Paper/TabsName" method="_on_button_button_up"]
+[connection signal="area_entered" from="Paper/Node2D/Point 1" to="." method="_on_point_1_area_entered"]
+[connection signal="area_exited" from="Paper/Node2D/Point 1" to="." method="_on_point_1_area_exited"]
+[connection signal="area_entered" from="Paper/Node2D/Point 2" to="." method="_on_point_2_area_entered"]
+[connection signal="area_exited" from="Paper/Node2D/Point 2" to="." method="_on_point_2_area_exited"]
+[connection signal="area_entered" from="Paper/Node2D/Point 3" to="." method="_on_point_3_area_entered"]
+[connection signal="area_exited" from="Paper/Node2D/Point 3" to="." method="_on_point_3_area_exited"]
+[connection signal="area_entered" from="Paper/Node2D/Point 4" to="." method="_on_point_4_area_entered"]
+[connection signal="area_exited" from="Paper/Node2D/Point 4" to="." method="_on_point_4_area_exited"]
+[connection signal="area_entered" from="Paper/Node2D/Point 5" to="." method="_on_point_5_area_entered"]
+[connection signal="area_exited" from="Paper/Node2D/Point 5" to="." method="_on_point_5_area_exited"]
